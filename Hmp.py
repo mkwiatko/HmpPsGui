@@ -54,6 +54,8 @@ class Hmp():
    def setOutput(self,channel,state):
       if self.connected:
          self.ser.flushInput()
+         cmd = 'OUTPut:GENeral 1\n'
+         self.ser.write(cmd.encode())
          cmd = 'INSTrument:NSELect '+ str(channel+1) +'\n'
          self.ser.write(cmd.encode())
          if state:
